@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import RetrieveData from './components/RetrieveData'
+import RetrieveData from './common/RetrieveData'
 
 import NavBar from './components/NavBar';
 
