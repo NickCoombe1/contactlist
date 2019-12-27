@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import { InputBase, IconButton, Typography, Toolbar, AppBar } from '@material-ui/core';
 
-const useStyles = makeStyles(theme => ({ //use this to format indivdual components
+const useStyles = makeStyles(theme => ({ //use this to format indivdual components 
     menuButton: {
         marginRight: theme.spacing(2),
     },
@@ -21,12 +21,12 @@ export default function NavBar() {
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" className={classes.title} color="inherit">
+                    <Typography variant="h6" className={classes.title} color="inherit"> 
                         Contact List
                 </Typography>
                     <InputBase
-                    placeholder="Search" />
-                </Toolbar>
+                    placeholder="Search" /> 
+                </Toolbar>  
             </AppBar>
         </div>
     )
