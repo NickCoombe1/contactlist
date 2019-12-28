@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import RetrieveData from './common/RetrieveData'
+import RetrieveData from './components/DisplayContacts'
 
 import NavBar from './components/NavBar';
 
