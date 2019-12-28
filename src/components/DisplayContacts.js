@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 
-class RetrieveData extends Component {
+class DisplayContacts extends Component {
     constructor(){
         super();
         this.state = {
@@ -30,4 +30,4 @@ render() {
     }
 }
 
-export default RetrieveData
+export default DisplayContacts
