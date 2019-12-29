@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-import propTypes from 'prop-types';
 import { Card, CardActions, CardContent, Typography, Grid } from '@material-ui/core';
-import { makeStyles, withStyles } from "@material-ui/styles"
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
     card: {
-        width: "100",
-        height: "100",
-
+        height: "100%",
+        // maxHeight: "250px",
+        width: "100%",
+        // maxWidth: "250px",
     },
-    gridRoot: {
+    root: {
         direction: "row",
-        justify: "center",
         alignItems: "stretch",
         flex: "row",
 
@@ -19,38 +18,22 @@ const useStyles = makeStyles({
 
 });
 
-class DisplayContacts extends Component {
-    constructor() {
-        super();
-        this.state = {
-            contactInfo: []      //empty array to hold retrieved info    
-        };
-    }
-
-    componentDidMount() {
-        let url = 'http://jsonplaceholder.typicode.com/users'
-        fetch(url)
-            .then(res => res.json()) //ERROR HANDLING
-            .then(data => this.setState({ contactInfo: data })) //save response data into array intialised before
-
-    }
 
 
 
-    render() {
-        const { contactInfo } = this.state;
-        console.log("state", this.state.contactInfo); //delete this
-        const {classes} = this.props;
+const DisplayContacts = ({contactInfo}) => {
+        const classes = useStyles();
+        console.log("state", contactInfo); //delete this
         return (
             <div className="home" style={{padding: 20}}>
                 <Grid spacing={2}>
                     <Grid item xs={12}>
-                        <Grid container className= {classes.gridRoot} spacing={2}>
-                            {this.state.contactInfo.map(contact => {
+                        <Grid container className={classes.root} justify ="center" spacing={5}>
+                            {contactInfo.map(contact => {
                                 const { id, name, email, phone, company } = contact; //map data we need for cards 
                                 return (
                                     <Grid key={id} item>
-                                        <Card className={classes.card}>
+                                        <Card className={classes.card} >
                                             <CardContent>
                                                 <Typography variant="h5">
                                                     {name}
@@ -74,9 +57,6 @@ class DisplayContacts extends Component {
         )
 
     }
-}
-DisplayContacts.propTypes = { //fixes invalid hook calls
-    classes: propTypes.object.isRequired,
-};
 
-export default withStyles(useStyles)(DisplayContacts);
+
+export default DisplayContacts;
