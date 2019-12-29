@@ -5,9 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
     card: {
         height: "100%",
-        // maxHeight: "250px",
-        width: "100%",
-        // maxWidth: "250px",
+        width: "300px",
     },
     root: {
         direction: "row",
