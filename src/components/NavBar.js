@@ -64,6 +64,7 @@ export default function NavBar() {
         setAnchorEl(null);
     };
 
+
     return (
         <div>
             <AppBar className = {classes.appBar} position="static" >
