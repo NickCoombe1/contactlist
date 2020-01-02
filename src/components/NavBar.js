@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
+import {Link} from "react-router-dom";
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { InputBase, IconButton, Typography, Toolbar, AppBar, MenuItem, Menu} from '@material-ui/core';
@@ -78,8 +79,8 @@ export default function NavBar() {
                     open={open}
                     onClose={handleClose}
                     >
-                        <MenuItem> Dashboard</MenuItem>
-                        <MenuItem> Reports</MenuItem>
+                        <MenuItem component={Link} to="/"> Home</MenuItem>
+                        <MenuItem component={Link}to="/reports"> Reports</MenuItem>
                     </Menu>
                     <Typography variant="h6" className={classes.title} color="inherit"> 
                         Contact List
