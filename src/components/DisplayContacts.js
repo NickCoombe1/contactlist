@@ -30,7 +30,8 @@ class DisplayContacts extends Component{
         super(props);
         this.state= {
             contactInfo: [],
-            isLoading: false
+            isLoading: false,
+            selectedId: 0,
 
         }
     }
@@ -45,25 +46,22 @@ class DisplayContacts extends Component{
             });
             
     }
-        // const classes = useStyles();
-        // console.log("state", contactInfo); //delete this
         render(){
             const {classes} = this.props;
-
-
         return (
             <div className="home" style={{padding: 20}}>
                 <Grid spacing={2}>
                     <Grid item xs={12}>
                         <Grid container className={classes.root} justify ="center" spacing={5}>
+                        {this.state.showBusinessCard && <OpenBusinessCard close={() => this.setState({showBusinessCard:false})} selectedId={this.state.selectedId}/> }
                             {this.state.contactInfo.map(contact => {
                                 const { id, name, email, phone, company } = contact; //map data we need for cards 
                                 return (
                                     <Grid key={id} item>
-                                        <Card className={classes.card} >
-                                            <ButtonBase className={classes.cardButton} onClick={()=> this.setState({showBusinessCard: true})}
+                                        <Card className={classes.card} height="100%" width="300px" >
+                                            <ButtonBase  onClick={()=> this.setState({showBusinessCard: true, selectedId: id})}
                                             > 
-                            {this.state.showBusinessCard && <OpenBusinessCard close={() => this.setState({showBusinessCard:false})}id={id}/> }
+
                                             <CardContent>
                                                 <Typography variant="h5">
                                                     {name}
