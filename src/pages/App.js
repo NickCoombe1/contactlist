@@ -3,6 +3,7 @@ import DisplayContacts from '../components/DisplayContacts';
 import { withRouter } from 'react-router';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import NavBar from '../components/NavBar';
+import Reports from './Reports';
 
 class App extends Component {
   constructor(props) {
@@ -20,7 +21,9 @@ class App extends Component {
             <Route exact path='/' component={withRouter(DisplayContacts)}>
               <DisplayContacts contactInfo={this.state.contactInfo} />
             </Route>
-            <Route exact path='/reports'></Route>
+            <Route exact path='/reports' component={withRouter(Reports)}>
+              <Reports/>
+            </Route>
 
           </Switch>
         </div></Router>
