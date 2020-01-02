@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, CardActions, CardContent, Typography, Grid, ButtonBase } from '@material-ui/core';
 import OpenBusinessCard from './OpenBusinessCard';
-
+import NavBar from './NavBar';
 
 
 class DisplayContacts extends Component {
@@ -27,7 +27,9 @@ class DisplayContacts extends Component {
     }
     render() {
         return (
-            <div className="home" style={{ padding: 20 }}>
+            <div className="home">
+                <NavBar/>
+                <div style={{padding: 20}}>
                 <Grid spacing={2}>
                     <Grid item xs={12}>
                         <Grid container justify="center" spacing={5}>
@@ -62,6 +64,7 @@ class DisplayContacts extends Component {
                         </Grid>
                     </Grid>
                 </Grid>
+                </div>
             </div>
 
         )
