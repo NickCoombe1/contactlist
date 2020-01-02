@@ -10,7 +10,7 @@ class Reports extends Component {
     render(){
         return(
             <div>
-                <NavBar/>
+                <NavBar header="Reports"/>
             </div>
         )
     }

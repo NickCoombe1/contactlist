@@ -28,7 +28,7 @@ class DisplayContacts extends Component {
     render() {
         return (
             <div >
-                <NavBar/>
+                <NavBar header="Contact List"/>
                 <div className="home" style={{padding: 20}}>
                 <Grid spacing={2}>
                     <Grid item xs={12}>

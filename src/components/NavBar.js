@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({ //use this to format indivdual componen
       }
 }));
 
-export default function NavBar() {
+export default function NavBar({header}) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -83,7 +83,7 @@ export default function NavBar() {
                         <MenuItem component={Link}to="/reports"> Reports</MenuItem>
                     </Menu>
                     <Typography variant="h6" className={classes.title} color="inherit"> 
-                        Contact List
+                        {header}
                 </Typography>
                 <div className ={classes.search}>
                     <div className={classes.searchIcon}>
