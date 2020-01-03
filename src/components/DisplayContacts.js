@@ -19,7 +19,7 @@ class DisplayContacts extends Component {
         let url = 'http://jsonplaceholder.typicode.com/users'
         fetch(url)
             .then(res => res.json())
-            .then(data => this.setState({ contactInfo: data, isLoading: false })) //save response data into array intialised before
+            .then(data => this.setState({ contactInfo: data, isLoading: false })) //save response data into state array intialised before
             .catch((error) => {
                 alert("Error when fetching API data, please try again.");
             });
@@ -33,13 +33,13 @@ class DisplayContacts extends Component {
                 <Grid spacing={2}>
                     <Grid item xs={12}>
                         <Grid container justify="center" spacing={5}>
-                            {this.state.showBusinessCard && <OpenBusinessCard close={() => this.setState({ showBusinessCard: false })} selectedId={this.state.selectedId} />}
+                            {this.state.showBusinessCard && <OpenBusinessCard close={() => this.setState({ showBusinessCard: false })} selectedId={this.state.selectedId} selectedContact={this.state.selectedContact} />}
                             {this.state.contactInfo.map(contact => {
                                 const { id, name, email, phone, company } = contact; //map data we need for cards 
                                 return (
                                     <Grid key={id} item>
                                         <Card style={{ height: "100%", width: "300px" }} >
-                                            <ButtonBase onClick={() => this.setState({ showBusinessCard: true, selectedId: id })}
+                                            <ButtonBase onClick={() => this.setState({ showBusinessCard: true, selectedId: id, selectedContact: contact })} //set selected card data 
                                             >
 
                                                 <CardContent>
