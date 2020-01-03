@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import DisplayContacts from '../components/DisplayContacts';
 import { withRouter } from 'react-router';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import NavBar from '../components/NavBar';
 import Reports from './Reports';
 
 class App extends Component {

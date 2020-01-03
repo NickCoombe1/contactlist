@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardActions, CardContent, Typography, Grid, ButtonBase } from '@material-ui/core';
+import { Card, CardContent, Typography, Grid, ButtonBase } from '@material-ui/core';
 import OpenBusinessCard from './OpenBusinessCard';
 import NavBar from './NavBar';
 
