@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({ //use this to format indivdual componen
       }
 }));
 
-export default function NavBar({header}) {
+export default function NavBar({header}) { //pass title of page as header 
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
