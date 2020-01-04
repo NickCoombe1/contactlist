@@ -5,6 +5,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { TextField, IconButton, Typography, Toolbar, AppBar, MenuItem, Menu } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
+import OpenBusinessCard from './OpenBusinessCard';
 
 const useStyles = makeStyles(theme => ({ //use this to format indivdual components 
     menuButton: {
@@ -57,11 +58,10 @@ const useStyles = makeStyles(theme => ({ //use this to format indivdual componen
     }
 }));
 
-export default function NavBar({ header, contactInfo }) { //pass title of page as header 
+export default function NavBar({ header, contactInfo}) { //pass title of page as header 
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
-    console.log(contactInfo)
     const handleClick = event => { //when menu clicked do something
         setAnchorEl(event.currentTarget);
     };
@@ -102,12 +102,13 @@ export default function NavBar({ header, contactInfo }) { //pass title of page a
                             }}
                             inputProps={{ 'aria-label': 'search' }} /> */}
                         <Autocomplete
+                            onChange={(event, value) => console.log(value)} //do something with selected value
                             id="searchBar"
                             freeSolo
                             className={classes.inputRoot}
                             options={contactInfo.map(contact=> contact.name)}
                             renderInput={params => (
-                                <TextField {...params} className={classes.inputInput} />
+                                <TextField {...params}  className={classes.inputInput} />
 
                             )}
                         />

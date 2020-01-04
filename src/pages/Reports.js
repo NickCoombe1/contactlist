@@ -10,7 +10,7 @@ class Reports extends Component {
     render(){
         return(
             <div>
-                <NavBar header="Reports"/>
+                <NavBar header="Reports" contactInfo ={this.props.contactInfo}/>
             </div>
         )
     }

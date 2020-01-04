@@ -14,21 +14,22 @@ class DisplayContacts extends Component {
 
         }
     }
-    componentDidMount() {
-        this.setState({ isLoading: true });
-        let url = 'http://jsonplaceholder.typicode.com/users'
-        fetch(url)
-            .then(res => res.json())
-            .then(data => this.setState({ contactInfo: data, isLoading: false })) //save response data into state array intialised before
-            .catch((error) => {
-                alert("Error when fetching API data, please try again.");
-            });
+    // componentDidMount() {
+    //     this.setState({ isLoading: true });
+    //     let url = 'http://jsonplaceholder.typicode.com/users'
+    //     fetch(url)
+    //         .then(res => res.json())
+    //         .then(data => this.setState({ contactInfo: data, isLoading: false })) //save response data into state array intialised before
+    //         .catch((error) => {
+    //             alert("Error when fetching API data, please try again.");
+    //         });
 
-    }
+    // }
     render() {
+        this.state.contactInfo = this.props.contactInfo
         return (
             <div >
-                <NavBar header="Contact List" contactInfo ={this.state.contactInfo}/>
+                <NavBar header="Contact List" contactInfo ={this.state.contactInfo}  />
                 <div className="home" style={{padding: 20}}>
                 <Grid spacing={2}>
                     <Grid item xs={12}>
@@ -39,20 +40,14 @@ class DisplayContacts extends Component {
                                 return (
                                     <Grid key={id} item>
                                         <Card style={{ height: "100%", width: "300px" }} >
-                                            <ButtonBase onClick={() => this.setState({ showBusinessCard: true, selectedId: id, selectedContact: contact })} //set selected card data 
+                                            <ButtonBase style={{width: "100%"}} onClick={() => this.setState({ showBusinessCard: true, selectedId: id, selectedContact: contact })} //set selected card data 
                                             >
 
                                                 <CardContent>
-                                                    <Typography variant="h5">
+                                                    <Typography variant="h5" aligh="center">
                                                         {name}
                                                     </Typography>
-                                                    <Typography variant="h6">
-                                                        {email}
-                                                    </Typography>
-                                                    <Typography variant="h6">
-                                                        {phone}
-                                                    </Typography>
-                                                    <Typography variant="h6">
+                                                    <Typography variant="h7"aligh="center" >
                                                         {company.name}
                                                     </Typography>
                                                 </CardContent>

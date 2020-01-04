@@ -8,9 +8,21 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      contactInfo: [],
+      isLoading: false,
     };
   }
+  componentDidMount() {
+    this.setState({ isLoading: true });
+    let url = 'http://jsonplaceholder.typicode.com/users'
+    fetch(url)
+        .then(res => res.json())
+        .then(data => this.setState({ contactInfo: data, isLoading: false })) //save response data into state array intialised before
+        .catch((error) => {
+            alert("Error when fetching API data, please try again.");
+        });
 
+}
 
   render() { //need to add route for reports
     return (
@@ -18,10 +30,10 @@ class App extends Component {
         <div>
           <Switch>
             <Route exact path='/' component={withRouter(DisplayContacts)}>
-              <DisplayContacts/>
+              <DisplayContacts contactInfo ={this.state.contactInfo}/>
             </Route>
             <Route exact path='/reports' component={withRouter(Reports)}>
-              <Reports/>
+              <Reports contactInfo ={this.state.contactInfo}/>
             </Route>
 
           </Switch>
