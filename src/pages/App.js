@@ -10,16 +10,15 @@ class App extends Component {
     super(props);
     this.state = {
       contactInfo: [],
-      isLoading: false,
+      isLoaded: false,
     };
   }
   componentDidMount() {
-    console.log("waiting for API")
     this.setState({ isLoading: true });
     let url = 'http://jsonplaceholder.typicode.com/users'
     fetch(url)
       .then(res => res.json())
-      .then(data => this.setState({ contactInfo: data, isLoading: false })) //save response data into state array intialised before
+      .then(data => this.setState({ contactInfo: data, isLoaded: true })) //save response data into state array intialised before. 
       .catch((error) => {
         alert("Error when fetching API data, please try again.");
       });
@@ -27,6 +26,7 @@ class App extends Component {
   }
 
   render() { //need to add route for reports
+    if (this.state.isLoaded){ // dont load any components until the API has finished calling
     return (
       <Router>
         <div>
@@ -43,6 +43,9 @@ class App extends Component {
         </div></Router>
 
     )
+  } else{
+    return null;
+  }
   }
 }
 

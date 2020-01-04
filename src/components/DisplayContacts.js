@@ -8,7 +8,7 @@ class DisplayContacts extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            contactInfo: [],
+            contactInfo: props.contactInfo,
             selectedId: 0,
             input: '',
             filtered: props.contactInfo
@@ -27,31 +27,26 @@ class DisplayContacts extends Component {
 
     filterList(inputValue){ //retrieve input entered into search bar
         const {contactInfo} = this.state;
-        console.log(this.state.input)
-        if(inputValue === ""){
+        if(inputValue === null){
             this.setState({filtered: contactInfo})
         }
         else{
             this.setState({
-                filtered: contactInfo.filter(item => item.name.includes(inputValue))
+                filtered: contactInfo.filter(item => {
+                    const lc = item.name.toLowerCase(); 
+                    const lowerInputValue = inputValue.toLowerCase();
+                    return lc.includes(lowerInputValue)})
             });
 
         }
-        console.log(this.state.filtered)
     }
     
-    componentDidMount(){
-        console.log("render1")
-        const {contactInfo} = this.props;
-        this.setState({contactInfo})
-    }
+    // componentDidMount(){
+    //     const {contactInfo} = this.props;
+    //     this.setState({contactInfo})
+    // }
     render() {
-        console.log("render")
-        console.log(this.props)
-        // console.log(contactInfo)
-        this.state.contactInfo = this.props.contactInfo;
-        // this.state.filtered = this.props.contactInfo;
-        console.log(this.state.filtered)
+        // this.state.contactInfo = this.props.contactInfo;
         return (
             <div >
                 <div >
