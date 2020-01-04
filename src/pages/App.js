@@ -14,6 +14,7 @@ class App extends Component {
     };
   }
   componentDidMount() {
+    console.log("waiting for API")
     this.setState({ isLoading: true });
     let url = 'http://jsonplaceholder.typicode.com/users'
     fetch(url)

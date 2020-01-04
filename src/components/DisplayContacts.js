@@ -11,28 +11,47 @@ class DisplayContacts extends Component {
             contactInfo: [],
             selectedId: 0,
             input: '',
-            filtered: []
+            filtered: props.contactInfo
 
         }
+        this.getValueInput = this.getValueInput.bind(this); //bind these so state saves first click
+        this.filterList = this.filterList.bind(this);
     }
 
+    async getValueInput(value){
+        const inputValue = value;
+        await this.setState({input: inputValue}) //wait for state to update before filtering 
+        this.filterList(inputValue)       
 
-    filterList(inputValue){
-        console.log("input"+inputValue)
+    }
+
+    filterList(inputValue){ //retrieve input entered into search bar
         const {contactInfo} = this.state;
-        this.setState({
-            filtered: contactInfo.filter(item =>
-                item.name.includes(inputValue))
-        });
+        console.log(this.state.input)
+        if(inputValue === ""){
+            this.setState({filtered: contactInfo})
+        }
+        else{
+            this.setState({
+                filtered: contactInfo.filter(item => item.name.includes(inputValue))
+            });
+
+        }
         console.log(this.state.filtered)
-
     }
-
     
-
+    componentDidMount(){
+        console.log("render1")
+        const {contactInfo} = this.props;
+        this.setState({contactInfo})
+    }
     render() {
+        console.log("render")
+        console.log(this.props)
+        // console.log(contactInfo)
         this.state.contactInfo = this.props.contactInfo;
-        this.state.filtered = this.props.contactInfo;
+        // this.state.filtered = this.props.contactInfo;
+        console.log(this.state.filtered)
         return (
             <div >
                 <div >
@@ -46,7 +65,7 @@ class DisplayContacts extends Component {
                             }} />
                     </div>
                     <Autocomplete
-                        onChange={(event,value) => this.filterList(value)} //do something with selected value
+                        onChange={(event, value) => this.getValueInput(value)} //do something with selected value
                         id="searchBar"
                         freeSolo
                         style={{ width: '80%', padding: "20px" }}
@@ -62,7 +81,7 @@ class DisplayContacts extends Component {
                         <Grid item xs={12}>
                             <Grid container justify="center" spacing={5}>
                                 {this.state.showBusinessCard && <OpenBusinessCard close={() => this.setState({ showBusinessCard: false })} selectedContact={this.state.selectedContact} />}
-                                {this.state.contactInfo.map(contact => {
+                                {this.state.filtered.map(contact => {
                                     const { id, name, company } = contact; //map data we need for cards 
                                     return (
                                         <Grid key={id} item>
