@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import  {Dialog, DialogTitle, Button} from '@material-ui/core'
+import  {Dialog, Button} from '@material-ui/core'
 import logo from './businessCardBackground.png';
 
 class OpenBusinessCard extends Component { //needs to be class as it needs to saveState of open
@@ -54,14 +54,11 @@ class OpenBusinessCard extends Component { //needs to be class as it needs to sa
         this.props.close();
     }
     render(){
-        const {selectedId, selectedContact} = this.props; //get current cards info
-        console.log(selectedContact)
         return(
             
             <Dialog
             modal= {"false"}
             open = {this.state.open}>
-                <DialogTitle>Display Photo:{selectedId}</DialogTitle> 
                 <div>
                     <canvas ref={(c=> c && (this.context = c.getContext('2d')))} width={600} height={300}/>
                 </div>

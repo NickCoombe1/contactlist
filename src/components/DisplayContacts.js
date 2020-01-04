@@ -28,12 +28,12 @@ class DisplayContacts extends Component {
     render() {
         return (
             <div >
-                <NavBar header="Contact List"/>
+                <NavBar header="Contact List" contactInfo ={this.state.contactInfo}/>
                 <div className="home" style={{padding: 20}}>
                 <Grid spacing={2}>
                     <Grid item xs={12}>
                         <Grid container justify="center" spacing={5}>
-                            {this.state.showBusinessCard && <OpenBusinessCard close={() => this.setState({ showBusinessCard: false })} selectedId={this.state.selectedId} selectedContact={this.state.selectedContact} />}
+                            {this.state.showBusinessCard && <OpenBusinessCard close={() => this.setState({ showBusinessCard: false })} selectedContact={this.state.selectedContact} />}
                             {this.state.contactInfo.map(contact => {
                                 const { id, name, email, phone, company } = contact; //map data we need for cards 
                                 return (

@@ -18,7 +18,7 @@ class App extends Component {
         <div>
           <Switch>
             <Route exact path='/' component={withRouter(DisplayContacts)}>
-              <DisplayContacts contactInfo={this.state.contactInfo} />
+              <DisplayContacts/>
             </Route>
             <Route exact path='/reports' component={withRouter(Reports)}>
               <Reports/>
