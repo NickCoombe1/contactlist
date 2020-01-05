@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Dialog, Button } from '@material-ui/core'
-import logo from './businessCardBackground.png';
+import logo from '../static/businessCardBackground.png';
 
 class OpenBusinessCard extends Component { //needs to be class as it needs to saveState of open
     constructor(props) {

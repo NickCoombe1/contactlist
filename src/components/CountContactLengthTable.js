@@ -3,43 +3,45 @@ import { TableContainer, Paper, Table, TableRow, TableHead, TableCell, TableBody
 
 
 
-class ContactTable extends Component {
+class CountContactLengthTable extends Component {
     constructor(props) {
         super(props)
         this.state = {
             contactInfo: props.contactInfo,
-            letterCount: {},
+            charCount: {}, //object to hold char/name pairs
         }
         this.retrieveTableData = this.retrieveTableData.bind(this);
     }
 
 componentDidMount(){
+    const { contactInfo } = this.props;
+    this.setState({ contactInfo }) //call this on rerender
     this.retrieveTableData();
 }
 
 retrieveTableData(){
     this.state.contactInfo.map(item =>{
-        const firstLetter = item.name.slice(0,1);
-        (firstLetter in this.state.letterCount) ? this.state.letterCount[firstLetter] += 1 : this.state.letterCount[firstLetter] = 1; //add to count if letter already in object
-
+        const contactLength = item.name.length;
+        this.state.charCount[item.name] = contactLength;
     })
+    console.log(this.state.charCount)
 }
 
 render(){
     return (
-        <TableContainer component={Paper} style={{width:'70%'}}>
+        <TableContainer component={Paper} style={{width:'90%', marginTop: 20}}>
             <Table size="small" aria-label="contacts table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Letter</TableCell>
-                        <TableCell>Contacts starting with:</TableCell>
+                        <TableCell>Name</TableCell>
+                        <TableCell>Length of Name:</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {this.state.letterCount && Object.entries(this.state.letterCount).map(([keyName, value]) => {
+                    {this.state.charCount && Object.entries(this.state.charCount).map(([keyName, value]) => {
                         return(
                         <TableRow key={keyName}>
-                            <TableCell align="center">
+                            <TableCell align="left">
                                 {keyName}
                             </TableCell>
                             <TableCell align="right">
@@ -56,4 +58,4 @@ render(){
 
 }
 
-export default ContactTable;
+export default CountContactLengthTable;
