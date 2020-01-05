@@ -41,12 +41,11 @@ class DisplayContacts extends Component {
         }
     }
     
-    // componentDidMount(){
-    //     const {contactInfo} = this.props;
-    //     this.setState({contactInfo})
-    // }
+    componentDidMount(){ //not needed anymore; maybe useful if render is super fast
+        const {contactInfo} = this.props;
+        this.setState({contactInfo})
+    }
     render() {
-        // this.state.contactInfo = this.props.contactInfo;
         return (
             <div >
                 <div >
