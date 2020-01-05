@@ -26,25 +26,23 @@ retrieveTableData(){
 }
 
 render(){
-    console.log(this.state.letterCount)
-    console.log("rendering")
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} style={{width:'70%'}}>
             <Table size="small" aria-label="contacts table">
                 <TableHead>
                     <TableRow>
                         <TableCell>Letter</TableCell>
-                        <TableCell>Number of Contacts</TableCell>
+                        <TableCell>Contacts starting with:</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {this.state.letterCount && Object.entries(this.state.letterCount).map(([keyName, value]) => {
                         return(
-                        <TableRow>
-                            <TableCell>
+                        <TableRow key={keyName}>
+                            <TableCell align="center">
                                 {keyName}
                             </TableCell>
-                            <TableCell>
+                            <TableCell align="right">
                                 {value}
                             </TableCell>
                         </TableRow>
