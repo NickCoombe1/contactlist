@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Container, } from '@material-ui/core'
 import CountContactLetterTable from '../components/CountContactLetterTable';
 import CountContactLengthTable from '../components/CountContactLengthTable';
+
+/** 
+ * Parent Component that implements radio buttons to render either child depending on what's selected.
+ */
 class Reports extends Component {
     constructor(props) {
         super(props);
@@ -22,7 +26,7 @@ class Reports extends Component {
                 showLengthContactTable: true
             })
         }
-        else{
+        else {
             this.setState({
                 defaultValue: event.currentTarget.value,
                 showCountContactTable: true,

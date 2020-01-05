@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Dialog, Button } from '@material-ui/core'
 import logo from '../static/businessCardBackground.png';
 
+/**
+ * Component that handles and renders business cards using some basic CSS and HTML5 Canvas.
+ */
+
 class OpenBusinessCard extends Component { //needs to be class as it needs to saveState of open
     constructor(props) {
         super(props)

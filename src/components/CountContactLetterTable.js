@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { TableContainer, Paper, Table, TableRow, TableHead, TableCell, TableBody } from '@material-ui/core'
 
-
+/**
+ * Basic Report Component that shows how many contact names start with a specific letter. Letters with 0 contacts are omitted.
+ */
 
 class CountContactLetterTable extends Component {
     constructor(props) {
@@ -13,48 +15,49 @@ class CountContactLetterTable extends Component {
         this.retrieveTableData = this.retrieveTableData.bind(this);
     }
 
-componentDidMount(){
-    const { contactInfo } = this.props;
-    this.setState({ contactInfo }) //call this on rerender
-    this.retrieveTableData();
-}
+    componentDidMount() {
+        const { contactInfo } = this.props;
+        this.setState({ contactInfo }) //call this on rerender
+        this.retrieveTableData();
+    }
 
-retrieveTableData(){
-    this.state.contactInfo.map(item =>{
-        const firstLetter = item.name.slice(0,1);
-        (firstLetter in this.state.letterCount) ? this.state.letterCount[firstLetter] += 1 : this.state.letterCount[firstLetter] = 1; //add to count if letter already in object
+    retrieveTableData() {
+        this.state.contactInfo.map(item => {
+            const firstLetter = item.name.slice(0, 1);
+            (firstLetter in this.state.letterCount) ? this.state.letterCount[firstLetter] += 1 : this.state.letterCount[firstLetter] = 1; //add to count if letter already in object
+            return item;
+        })
+    }
 
-    })
-}
-
-render(){
-    return (
-        <TableContainer component={Paper} style={{width:'90%', marginTop: 20}}>
-            <Table size="small" aria-label="contacts table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Letter</TableCell>
-                        <TableCell>Number of contacts starting with:</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {this.state.letterCount && Object.entries(this.state.letterCount).map(([keyName, value]) => {
-                        return(
-                        <TableRow key={keyName}>
-                            <TableCell align="left">
-                                {keyName}
-                            </TableCell>
-                            <TableCell align="left">
-                                {value}
-                            </TableCell>
+    render() {
+        return (
+            <TableContainer component={Paper} style={{ width: '90%', marginTop: 20 }}>
+                <Table size="small" aria-label="contacts table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Letter</TableCell>
+                            <TableCell>Number of contacts starting with:</TableCell>
                         </TableRow>
-                        )
-                    }
-                    )}
-                </TableBody>
-            </Table>
-        </TableContainer>
-    )}
+                    </TableHead>
+                    <TableBody>
+                        {this.state.letterCount && Object.entries(this.state.letterCount).map(([keyName, value]) => {
+                            return (
+                                <TableRow key={keyName}>
+                                    <TableCell align="left">
+                                        {keyName}
+                                    </TableCell>
+                                    <TableCell align="left">
+                                        {value}
+                                    </TableCell>
+                                </TableRow>
+                            )
+                        }
+                        )}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        )
+    }
 
 }
 

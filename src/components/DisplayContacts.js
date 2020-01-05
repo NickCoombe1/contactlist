@@ -4,6 +4,10 @@ import OpenBusinessCard from './OpenBusinessCard';
 import SearchIcon from '@material-ui/icons/Search';
 import { Autocomplete } from '@material-ui/lab';
 
+/**
+ * One of the larger Components that handles the search bar and calls OpenBusinessCard Component when a contact card (tile) is clicked.
+ */
+
 class DisplayContacts extends Component {
     constructor(props) {
         super(props);
@@ -18,32 +22,33 @@ class DisplayContacts extends Component {
         this.filterList = this.filterList.bind(this);
     }
 
-    async getValueInput(value){
+    async getValueInput(value) {
         const inputValue = value;
-        await this.setState({input: inputValue}) //wait for state to update before filtering 
-        this.filterList(inputValue)       
+        await this.setState({ input: inputValue }) //wait for state to update before filtering 
+        this.filterList(inputValue)
 
     }
 
-    filterList(inputValue){ //retrieve input entered into search bar
-        const {contactInfo} = this.state;
-        if(inputValue === null){
-            this.setState({filtered: contactInfo})
+    filterList(inputValue) { //retrieve input entered into search bar
+        const { contactInfo } = this.state;
+        if (inputValue === null) {
+            this.setState({ filtered: contactInfo })
         }
-        else{
+        else {
             this.setState({
                 filtered: contactInfo.filter(item => {
-                    const lc = item.name.toLowerCase(); 
+                    const lc = item.name.toLowerCase();
                     const lowerInputValue = inputValue.toLowerCase();
-                    return lc.includes(lowerInputValue)})
+                    return lc.includes(lowerInputValue)
+                })
             });
 
         }
     }
-    
-    componentDidMount(){ //not needed anymore; maybe useful if render is super fast
-        const {contactInfo} = this.props;
-        this.setState({contactInfo})
+
+    componentDidMount() { //not needed anymore; maybe useful if render is super fast
+        const { contactInfo } = this.props;
+        this.setState({ contactInfo })
     }
     render() {
         return (
